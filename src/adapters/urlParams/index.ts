@@ -1,0 +1,1 @@
+export { urlParamsAdapter } from "./urlParams";

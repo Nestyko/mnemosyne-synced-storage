@@ -1,0 +1,1 @@
+export { chromeStorageAdapter } from "./chrome";

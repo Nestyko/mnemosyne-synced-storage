@@ -14,7 +14,8 @@
     "strict": true,
     "outDir": "./lib",
     "rootDir": "./src",
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": "src"
   },
   "include": ["src"],
   "exclude": [

@@ -54,7 +54,8 @@
     "prepublishOnly": "npm test && npm run lintAndFormat && npm run  build",
     "preversion": "npm run lint",
     "version": "npm run lintAndFormat && git add -A src",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "prepare": "husky install"
   },
   "dependencies": {
     "query-string": "^7.1.1"

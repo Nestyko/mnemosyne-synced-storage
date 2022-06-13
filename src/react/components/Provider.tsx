@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
-import { Adapter } from "storageAdapter";
-import { MnemosyneContext } from "react/components/Context";
+import { Adapter } from "../../storageAdapter";
+import { MnemosyneContext } from "./Context";
 
 export const MnemosyneProvider: React.FC<{
   adapter: Adapter<any>;

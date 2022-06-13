@@ -1,4 +1,4 @@
-import { Adapter } from "storageAdapter";
+import { Adapter } from "../../storageAdapter";
 
 const name = "ChromeStorageAdapter";
 

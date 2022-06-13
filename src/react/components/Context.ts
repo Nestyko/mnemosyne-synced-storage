@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { Adapter } from "storageAdapter";
+import { Adapter } from "../../storageAdapter";
 
 export const MnemosyneContext = /*#__PURE__*/ createContext<Adapter<any>>(
   null as any

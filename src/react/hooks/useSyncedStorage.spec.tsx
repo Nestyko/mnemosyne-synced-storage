@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { render, waitFor } from "@testing-library/react";
-import { setUseStorage } from "./useStorage";
 import { MultiStorageAdapter } from "../../storageAdapter";
+import { MnemosyneProvider } from "../components/Provider";
+import { useSyncedStorage } from "../hooks/useSyncedStorage";
 
 jest.useFakeTimers();
 
@@ -19,23 +20,26 @@ describe("useSync", () => {
     name = "Mock Adapter";
     isCompatible = () => true;
   }
+  const mockAdapter = new MultiStorageAdapter([
+    new MockAdapter({ myAweomeSyncVar: "myValue" }),
+  ]);
 
   const ComponentThatTestsSync = () => {
-    const mockAdapter = new MultiStorageAdapter([
-      new MockAdapter({ myAweomeSyncVar: "myValue" }),
-    ]);
-    const useSync = setUseStorage(mockAdapter);
-    const [storedVar, setVar] = useSync<string>(
-      "myAweomeSyncVar",
-      "default hook"
-    );
+    const [storedVar, setVar] = useSyncedStorage<string>({
+      key: "myAwesomeSyncVar",
+      defaultValue: "default hook",
+    });
     useEffect(() => {
       setTimeout(() => setVar("somethingElse"), 1000);
     }, [setVar]);
     return <div>{storedVar}</div>;
   };
   it("should call the method get and set", async () => {
-    const component = render(<ComponentThatTestsSync />);
+    const component = render(
+      <MnemosyneProvider adapter={mockAdapter}>
+        <ComponentThatTestsSync />
+      </MnemosyneProvider>
+    );
     expect(component.getByText("default hook")).toBeTruthy();
     jest.runAllTimers();
     await waitFor(() =>

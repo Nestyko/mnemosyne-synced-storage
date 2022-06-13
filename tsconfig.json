@@ -14,10 +14,9 @@
     "strict": true,
     "outDir": "./lib",
     "rootDir": "./src",
-    "jsx": "react-jsx",
-    "baseUrl": "src"
+    "jsx": "react-jsx"
   },
-  "include": ["src"],
+  "include": ["./src"],
   "exclude": [
     "**/__tests__/*",
     "src/**/*.spec.ts",

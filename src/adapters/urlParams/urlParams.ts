@@ -1,4 +1,4 @@
-import { Adapter, AdapterOptions } from "storageAdapter";
+import { Adapter, AdapterOptions } from "../../storageAdapter";
 import { parse, stringify } from "query-string";
 
 const name = "urlParamsAdapter";

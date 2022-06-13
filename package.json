@@ -1,5 +1,11 @@
 {
   "name": "mnemosyne-synced-storage",
+  "version": "0.0.1",
+  "description": "save and get data from multiple storage types and keep them in sync",
+  "main": "lib/index.js",
+  "module": "lib/index.es.js",
+  "types": "lib/index.d.ts",
+  "files": ["lib/**/*"],
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
@@ -13,22 +19,48 @@
     "@types/react": "^18.0.12",
     "@types/react-dom": "^18.0.5",
     "eslint": "^8.17.0",
+    "husky": "^8.0.1",
     "jest": "^28.1.1",
     "jest-environment-jsdom": "^28.1.1",
+    "lint-staged": "^13.0.1",
     "prettier": "^2.6.2",
     "react-test-renderer": "^18.1.0",
     "ts-jest": "^28.0.4",
-    "typescript": "^4.7.3"
+    "typescript": "^4.7.3",
+    "rollup": "^2.75.5",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "@rollup/plugin-commonjs": "^22.0.0",
+    "@rollup/plugin-image": "^2.1.1",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-typescript": "^8.3.2"
   },
   "peerDependencies": {
     "react": "*",
     "react-dom": "*"
   },
   "scripts": {
-    "test": "jest"
+    "format": "eslint --fix \"src/**/*.{ts,js,tsx,jsx}\" && prettier --write \"src/**/*.{ts,js,tsx,jsx}\"",
+    "lint": "tsc --noEmit && eslint \"src/**/*.{ts,js,tsx,jsx}\"",
+    "lintAndFormat": "npm run format && npm run lint",
+    "build": "rollup -c",
+    "test": "jest",
+    "prepublishOnly": "npm test && npm run lintAndFormat && npm run  build",
+    "preversion": "npm run lint",
+    "version": "npm run lintAndFormat && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "dependencies": {
     "query-string": "^7.1.1"
   },
-  "version": "0.0.1"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm test -- --watchAll=false --coverage"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx,js,jsx}": "yarn lintAndFormat"
+  }
 }

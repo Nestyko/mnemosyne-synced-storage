@@ -27,3 +27,4 @@ rules:
     - error
     - never
   '@typescript-eslint/explicit-module-boundary-types': off
+  'jest/no-conditional-expect': off

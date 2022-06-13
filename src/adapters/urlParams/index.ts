@@ -1,1 +1,1 @@
-export { urlParamsAdapter } from "./urlParams";
+export { urlParamsAdapter } from './urlParams'

@@ -1,1 +1,1 @@
-export { MultiStorageAdapter, Adapter, AdapterOptions } from "./storageAdapter";
+export { MultiStorageAdapter, Adapter, AdapterOptions } from './storageAdapter'

@@ -1,1 +1,1 @@
-export { chromeStorageAdapter } from "./chrome";
+export { chromeStorageAdapter } from './chrome'

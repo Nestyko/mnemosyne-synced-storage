@@ -2,36 +2,43 @@ import commonjs from '@rollup/plugin-commonjs'
 import resolve from '@rollup/plugin-node-resolve'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import typescript from '@rollup/plugin-typescript'
-import image from '@rollup/plugin-image'
-import del from 'rollup-plugin-delete'
 import jsonPlugin from '@rollup/plugin-json'
 
-import packageJson from './package.json'
+const plugins = [
+  peerDepsExternal(),
+  resolve(),
+  commonjs(),
+  jsonPlugin(),
+  typescript({
+    tsconfig: './tsconfig.json',
+  }),
+]
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default {
-  input: './src/index.ts',
+const indexFiles = [
+  './src/index.ts',
+  './src/react/index.ts',
+  './src/adapters/index.ts',
+]
+
+const config = indexFiles.map(inputFilePath => ({
+  input: inputFilePath,
   output: [
     {
-      file: packageJson.main,
+      file: inputFilePath.replace('src', 'lib').replace('ts', 'js'),
       format: 'cjs',
       sourcemap: true,
     },
     {
-      file: packageJson.module,
-      format: 'esm',
+      file: inputFilePath
+        .replace('src', 'lib')
+        .replace('index', 'index.es')
+        .replace('ts', 'js'),
+      format: 'es',
       sourcemap: true,
     },
   ],
-  plugins: [
-    del({ targets: ['lib/*'] }),
-    image(),
-    peerDepsExternal(),
-    resolve(),
-    commonjs(),
-    jsonPlugin(),
-    typescript({
-      tsconfig: './tsconfig.json',
-    }),
-  ],
-}
+  plugins,
+}))
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default config

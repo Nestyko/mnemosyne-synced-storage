@@ -4,10 +4,8 @@
   "description": "save and get data from multiple storage types and keep them in sync",
   "main": "lib/index.js",
   "module": "lib/index.es.js",
-  "types": "lib/index.d.ts",
-  "files": [
-    "lib/**/*"
-  ],
+  "types": "lib/@types",
+  "files": ["lib/**/*"],
   "devDependencies": {
     "@rollup/plugin-commonjs": "^22.0.0",
     "@rollup/plugin-image": "^2.1.1",
@@ -51,8 +49,7 @@
     "lintAndFormat": "npm run format && npm run lint",
     "build": "rollup -c",
     "test": "jest",
-    "prepublishOnly": "npm test && npm run lintAndFormat && npm run  build",
-    "preversion": "npm run lint",
+    "prepublishOnly": "npm test && npm run lintAndFormat && npm run build",
     "version": "npm run lintAndFormat && git add -A src",
     "postversion": "git push && git push --tags",
     "prepare": "husky install"
@@ -67,6 +64,6 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx,js,jsx}": "yarn lintAndFormat"
+    "src/**/*.{ts,tsx,js,jsx}": "npm run lintAndFormat"
   }
 }

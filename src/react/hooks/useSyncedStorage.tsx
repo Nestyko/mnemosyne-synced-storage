@@ -1,3 +1,4 @@
+import React from 'react'
 import { Adapter } from '../../storageAdapter'
 import { useEffect, useState, useCallback, useContext } from 'react'
 import MnemosyneContext from '../components/Context'

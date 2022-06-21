@@ -1,9 +1,7 @@
 import commonjs from '@rollup/plugin-commonjs'
 import resolve from '@rollup/plugin-node-resolve'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
-import typescript from '@rollup/plugin-typescript'
-import image from '@rollup/plugin-image'
-import del from 'rollup-plugin-delete'
+import typescript from 'rollup-plugin-typescript2'
 import jsonPlugin from '@rollup/plugin-json'
 
 import packageJson from './package.json'
@@ -28,8 +26,6 @@ export default {
     resolve(),
     commonjs(),
     jsonPlugin(),
-    typescript({
-      tsconfig: './tsconfig.json',
-    }),
+    typescript(),
   ],
 }

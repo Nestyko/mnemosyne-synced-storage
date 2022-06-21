@@ -44,7 +44,7 @@ import {useSyncedStorage} from 'mnemosyne-synced-storage/react'
 
 const MyComponent = () => {
     // use it just like "useState"
-    const [userId, setUserId] = useSyncedStorage<string>({key: 'user-id', defaultValue: null})
+    const [userId, setUserId] = useSyncedStorage<string>({key: 'user-id', defaultValue: ''})
     const handleUserIdChange = (e) => setUserId(e.target.value)
     return (
         <input onChange={handleUserIdChange} name="user-id" />

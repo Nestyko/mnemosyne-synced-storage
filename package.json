@@ -1,6 +1,6 @@
 {
   "name": "mnemosyne-synced-storage",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "save and get data from multiple storage types and keep them in sync",
   "main": "lib/index.js",
   "module": "lib/index.es.js",

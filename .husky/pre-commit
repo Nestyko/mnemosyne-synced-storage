@@ -1,5 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npm test -- --coverage --watchAll=false
-npx lint-staged
+yarn test --coverage --watchAll=false
+yarn dlx lint-staged

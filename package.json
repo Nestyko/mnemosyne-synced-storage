@@ -1,6 +1,6 @@
 {
   "name": "mnemosyne-synced-storage",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "save and get data from multiple storage types and keep them in sync",
   "main": "lib/index.js",
   "module": "lib/index.es.js",
@@ -10,7 +10,9 @@
     "type": "git",
     "url": "https://github.com/Nestyko/mnemosyne-synced-storage"
   },
-  "files": ["lib/**/*"],
+  "files": [
+    "lib/**/*"
+  ],
   "devDependencies": {
     "@rollup/plugin-commonjs": "^22.0.0",
     "@rollup/plugin-json": "^4.1.0",

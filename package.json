@@ -5,9 +5,12 @@
   "main": "lib/index.js",
   "module": "lib/index.es.js",
   "types": "lib/@types",
-  "files": [
-    "lib/**/*"
-  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nestyko/mnemosyne-synced-storage"
+  },
+  "files": ["lib/**/*"],
   "devDependencies": {
     "@rollup/plugin-commonjs": "^22.0.0",
     "@rollup/plugin-json": "^4.1.0",
